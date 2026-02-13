@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valentine Special 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+/* PASSWORD SCREEN */
+#lockScreen{
+    height:100vh;
+    background:#ff69b4;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    position:relative;
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.unlock-btn{
+    margin-top:15px;
+    padding:8px 20px;
+    border:none;
+    border-radius:20px;
+    background:white;
+    color:#ff1493;
+    cursor:pointer;
+}
+
+/* HINT BOX */
+.hint-box{
+    position:absolute;
+    top:20px;
+    background:white;
+    color:#ff1493;
+    padding:10px 20px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* ENVELOPE */
+#envelopePage{
+    display:none;
+    height:100vh;
+    background:#fff0f5;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.envelope{
+    width:250px;
+    height:150px;
+    background:#ff69b4;
+    position:relative;
+    cursor:pointer;
+}
+
+.flap{
+    width:0;
+    height:0;
+    border-left:125px solid transparent;
+    border-right:125px solid transparent;
+    border-bottom:80px solid #ff1493;
+    position:absolute;
+    top:-80px;
+    transition:1s;
+    transform-origin:top;
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+}
+
+/* PAGES */
+.page{
+    width:100%;
+    height:100vh;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    position:relative;
+    opacity:0;
+    transform:scale(0.95);
+    transition:all 0.8s ease;
+}
+
+.active{
+    display:flex;
+    opacity:1;
+    transform:scale(1);
+}
+
+#page1{
+    background:#d63384;
+    color:white;
+}
+
+.handwriting{
+    font-family:'Dancing Script', cursive;
+    font-size:40px;
+}
+
+#page2, #page3, #page4{
+    background:white;
+}
+
+.frame{
+    width:250px;
+    height:300px;
+    border:10px solid #ff69b4;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.love-text{
+    margin-top:20px;
+    font-size:26px;
+    color:#ff1493;
+    font-family:'Dancing Script', cursive;
+}
+
+.big-text{
+    color:#ff1493;
+    max-width:350px;
+    font-family:'Dancing Script', cursive;
+    font-size:22px;
+}
+
+.letter{
+    width:300px;
+    background:#ffe6f0;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:popup 1.2s ease;
+    font-family:'Dancing Script', cursive;
+    color:#ff1493;
+}
+
+@keyframes popup{
+    from{transform:scale(0.5); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+.next-btn{
+    position:absolute;
+    bottom:30px;
+    right:30px;
+    background:#ff69b4;
+    border:none;
+    color:white;
+    font-size:22px;
+    padding:10px 18px;
+    border-radius:50%;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD LOCK -->
+<div id="lockScreen">
+    <div class="hint-box">
+        Our journey started on.. 💞
+    </div>
+    <h2>Enter Password 💖</h2>
+    <input type="password" id="password" placeholder="Enter secret">
+    <button class="unlock-btn" onclick="checkPassword()">Unlock</button>
+</div>
+
+<!-- ENVELOPE -->
+<div id="envelopePage">
+    <div class="envelope" onclick="openEnvelope(this)">
+        <div class="flap"></div>
+    </div>
+    <p style="margin-top:20px; color:#ff1493;">Tap the envelope 💌</p>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <div class="handwriting">
+        Happy Valentine's Day <br> My Special One 💕
+    </div>
+    <button class="next-btn" onclick="nextPage()">➜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <div class="frame">
+        <img src="yourphoto.jpg">
+    </div>
+    <div class="love-text">I Love You ❤️</div>
+    <button class="next-btn" onclick="nextPage()">➜</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <div class="big-text">
+        Lots of love kusha >>> 🧿 <br><br>
+
+        Words won't express my feelings butt the thing that not gonna change is my ♾️ love for you.. 
+        my handsome valentine 😋 my best friend my comfort home boyfriend... everything. 💟 
+        u feel u doesn't matter buttt my soul knows your presence.. <br><br>
+
+        Nd please stop flighting nd ignoring 😑 be a good caring loving bf as of starting vala ur a good bf 
+        butt now a ur justttt 😒 im just a gurlll I too hve expectations 😑... whateverrr <br><br>
+
+        Craving for you, ur hug, love nd all you ... 😭🥺 (This long distance uhhh 😵) 
+        I m miiiiiiiiiiisssssssssssinnnggggg youu bhout Sara <br><br>
+
+        I LOVE YOU SO SO SO SO SO MUCH BACCHA 🌷💌
+    </div>
+    <button class="next-btn" onclick="nextPage()">➜</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <div class="letter">
+        My Love 💌 <br><br>
+        Every moment with you feels magical.
+        You are my happiness and my heart.
+        Forever yours ❤️ <br>
+        Anvi 🧿
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="iwannabeyours.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+let currentPage=1;
+
+function checkPassword(){
+    let pass=document.getElementById("password").value;
+    if(pass==="9/01/2025"){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("envelopePage").style.display="flex";
+
+        // Play music after password unlock
+        let music = document.getElementById("bgMusic");
+        music.play().catch(()=>{
+            window.addEventListener("click", function(){
+                music.play();
+            }, { once:true });
+        });
+    }else{
+        alert("Wrong password 💔");
+    }
+}
+
+function openEnvelope(el){
+    el.classList.add("open");
+    setTimeout(()=>{
+        document.getElementById("envelopePage").style.display="none";
+        document.getElementById("page1").classList.add("active");
+    },1000);
+}
+
+function nextPage(){
+    document.getElementById("page"+currentPage).classList.remove("active");
+    currentPage++;
+    if(currentPage<=4){
+        document.getElementById("page"+currentPage).classList.add("active");
+    }
+}
+</script>
+
+</body>
+</html>
